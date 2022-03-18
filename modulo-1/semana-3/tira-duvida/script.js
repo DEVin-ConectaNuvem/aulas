@@ -38,16 +38,29 @@ carro.revisoes[0].descricao = 'MUDEI';
 //   console.log(item);
 // }
 
-console.log(carro);
+//console.log(carro);
 
 // transforma objeto em string JSON
+// var carroJSON = JSON.stringify(carro);
+// console.log(carroJSON);
+
+// p.innerHTML = carroJSON;
+
+// // transforma string JSON em objeto
+// var carroObj = JSON.parse(carroJSON);
+// console.log(carroObj);
+
+// exemplo de uso de localStorage
 var carroJSON = JSON.stringify(carro);
+localStorage.setItem('carro', carroJSON);
 
-console.log(carroJSON);
+// recuperando item do localStorage
+var item = localStorage.getItem('carro');
 
-p.innerHTML = carroJSON;
-
-// transforma string JSON em objeto
-var carroObj = JSON.parse(carroJSON);
-
-console.log(carroObj);
+if (item) {
+  // convertendo JSON para Objeto
+  item = JSON.parse(item);
+  console.log(item);
+} else {
+  console.log('Item não encontrado');
+}
