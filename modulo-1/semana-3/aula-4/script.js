@@ -19,4 +19,28 @@
 //   }
 // }, 1000);
 
+var carrosVet = [];
+carrosVet[0] = 'gol';
+carrosVet[1] = 'escort';
+carrosVet[2] = 'corsa';
+
+//console.log(carrosVet);
+
+var carrosObj = {
+  teste_um: 'tal',
+  daOi: function () {
+    console.log('oi no objeto');
+  }
+};
+
+console.log(carrosObj);
+
+carrosObj.bla = 'gol';
+carrosObj.foo = 'escort';
+carrosObj.bar = 'corsa';
+carrosObj['barrere'] = 'corsa';
+
+console.log(carrosObj);
+
+carrosObj.daOi();
 
