@@ -1,19 +1,15 @@
 
-function falaOi() {
-  console.count('Oi');
-}
-
+// Exemplos de setTimeout e setInterval
+// function falaOi() {
+//   console.count('Oi');
+// }
 //var tOi = setTimeout(falaOi, 2000);
-
 //clearTimeout(tOi);
-
 // var iOi = setInterval(falaOi, 1000);
-
 // setTimeout(function () {
 //   console.log('Limpou o interval!');
 //   clearInterval(iOi);
 // }, 4000);
-
 // var i = 1;
 // var intervalOi = setInterval(function () {
 //   falaOi();
@@ -22,3 +18,5 @@ function falaOi() {
 //     clearInterval(intervalOi);
 //   }
 // }, 1000);
+
+
