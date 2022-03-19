@@ -9,12 +9,30 @@ var ul = document.getElementById('lista');
 var lista = [];
 var listaJSON = localStorage.getItem('lista');
 
+function removeItem(id) {
+  var novaLista = [];
+  lista.forEach(function (item) {
+    if (item.id !== id) {
+      novaLista.push(item);
+    }
+  })
+  lista = novaLista;
+  updateScreen();
+}
+
 function updateScreen() {
   ul.innerHTML = '';
   lista.forEach(function (item) {
     //ul.innerHTML += `<li>${item}</li>`;
+    var btn = document.createElement('button');
+    btn.innerHTML = 'x';
+    btn.onclick = function () {
+      removeItem(item.id);
+    }
     var li = document.createElement('li');
-    li.innerHTML = item;
+    li.id = `i${item.id}`;
+    li.innerHTML = item.name;
+    li.appendChild(btn);
     ul.appendChild(li);
   });
 }
@@ -32,7 +50,10 @@ function saveStorage() {
 
 function addItem() {
   if (campo.value) {
-    lista.push(campo.value);
+    lista.push({
+      id: Date.now(),
+      name: campo.value
+    });
     campo.value = '';
     updateScreen();
     saveStorage();
@@ -42,3 +63,9 @@ function addItem() {
 }
 
 btnAdd.addEventListener('click', addItem);
+
+campo.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addItem();
+  }
+});
