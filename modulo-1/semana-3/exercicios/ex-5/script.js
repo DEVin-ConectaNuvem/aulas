@@ -5,7 +5,13 @@ function atualizaRelogio() {
   // pega o momento atual
   var agora = new Date();
   // atualiza o display
-  display.innerHTML = agora.toLocaleTimeString();
+  display.innerHTML = agora.toLocaleTimeString(
+    navigator.language,
+    {
+      hour: '2-digit',
+      minute:'2-digit'
+    }
+  );
 };
 
 // atualiza relogio a cada 1 segundo
