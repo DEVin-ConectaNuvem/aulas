@@ -1,6 +1,26 @@
 // pega elementos do DOM
 var pDisplay = document.getElementById('display');
 
+// define variaveis de nomes
+var estacoes = {
+  verao: {
+    texto: 'Verão',
+    icone: 'verao.jpg'
+  },
+  outono: {
+    texto: 'Outono',
+    icone: 'outono.jpg'
+  },
+  inverno: {
+    texto: 'Inverno',
+    icone: 'inverno.jpg'
+  },
+  primavera: {
+    texto: 'Primavera',
+    icone: 'primavera.jpg'
+  }
+}
+
 // função para verificar a estação
 function verificaEstacao() {
   // pega a data e o ano atual
@@ -22,32 +42,41 @@ function verificaEstacao() {
   var inicioVerao = new Date(ano, 11, 22);
   
   // define valor inicial da variavel estação
-  var estacao = 'Verão';
+  var estacao = estacoes.verao;
 
   // testa se a data atual é menor que o inicio do outono
   if (data.getTime() < inicioOutono.getTime()) {
-    estacao = 'Verão';
+    estacao = estacoes.verao;
     // se sim é verão
   }
   // senão testa se a data atual é menor que o inicio do inverno
   else if (data.getTime() < inicioInverno.getTime()) {
-    estacao = 'Outono';
+    estacao = estacoes.outono;
     // se sim é outono
   }
   // senão testa se a data atual é menor que o inicio da primavera
   else if (data.getTime() < inicioPrimavera.getTime()) {
-    estacao = 'Inverno';
+    estacao = estacoes.inverno;
     // se sim é inverno
   }
   // senão testa se a data atual é menor que o inicio do verão
   else if (data.getTime() < inicioVerao.getTime()) {
-    estacao = 'Primavera';
+    estacao = estacoes.primavera;
     // se sim é primavera
   }
   // senão, é verão
 
   // exibe na tela
-  pDisplay.innerHTML = `${estacao}.`;
+  pDisplay.innerHTML = `${estacao.texto}.`;
+
+  // cria um elemento de imagem
+  var img = document.createElement('img');
+  // define o src do icone e o alt
+  img.src = `imagens/${estacao.icone}`;
+  img.alt = estacao.texto;
+
+  // exibe na tela
+  pDisplay.appendChild(img);
 
   // lembrando: existe várias maneiras de resolver
   // esse problema, esta é apenas uma delas
