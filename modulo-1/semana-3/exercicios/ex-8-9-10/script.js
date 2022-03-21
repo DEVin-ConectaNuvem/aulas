@@ -1,12 +1,12 @@
 // pega elementos do DOM que iremos manipular
-var campo = document.getElementById('campo-item');
-var btnAdd = document.getElementById('add-item');
-var ul = document.getElementById('lista');
+const campo = document.getElementById('campo-item');
+const btnAdd = document.getElementById('add-item');
+const ul = document.getElementById('lista');
 
 // inicializa variaveis de controle
-var lista = [];
+let lista = [];
 // busca lista no localStorage
-var listaJSON = localStorage.getItem('lista');
+const listaJSON = localStorage.getItem('lista');
 // verifica se veio algo do storage
 if (listaJSON) {
   // se sim, converte pra objeto
@@ -18,7 +18,7 @@ if (listaJSON) {
 // funcao de remocao de item por id
 function removeItem(id) {
   // cria uma lista nova
-  var novaLista = [];
+  const novaLista = [];
   // itera entre todos itens da lista velha
   lista.forEach(function (item) {
     if (item.id !== id) {
@@ -40,14 +40,14 @@ function updateScreen() {
   lista.forEach(function (item) {
     //ul.innerHTML += `<li>${item}</li>`;
     // cria botao de remocao e define evento
-    var btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.innerHTML = 'x';
     btn.onclick = function () {
       // remove a partir da id
       removeItem(item.id);
     }
     // cria o elemento li e acrescenta nome e botão
-    var li = document.createElement('li');
+    const li = document.createElement('li');
     li.id = `i${item.id}`;
     li.innerHTML = item.name;
     li.appendChild(btn);
@@ -59,7 +59,7 @@ function updateScreen() {
 // funcao de salvar no localStorage
 function saveStorage() {
   // converte lista para string JSON
-  var listaJSON = JSON.stringify(lista);
+  const listaJSON = JSON.stringify(lista);
   // salva a lista no localStorage
   localStorage.setItem('lista', listaJSON);
 }
