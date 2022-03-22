@@ -28,30 +28,30 @@
 // });
 
 // escopo global
-var global = 'estou no escopo global';
+//var global = 'estou no escopo global';
 
 // escopo de função
-function funcao() {
-  var func = 'estou no escopo de função';
-  console.log({ global, func });
-}
+// function funcao() {
+//   var func = 'estou no escopo de função';
+//   console.log({ global, func });
+// }
 
 // Exemplos de blocos:
 // if, else, for, while, switch
-if (funcao) {
-  const bloco = 'estou no escopo de bloco';
-} 
+// if (funcao) {
+//   const bloco = 'estou no escopo de bloco';
+// } 
 
 //console.log({ global, bloco });
 //funcao();
 
 // escopo de função
-function definirLargura() {
-  var largura = 100;
-  console.log(largura);
-}
-definirLargura();
-console.log(largura);
+// function definirLargura() {
+//   var largura = 100;
+//   console.log(largura);
+// }
+// definirLargura();
+// console.log(largura);
 
 // escopo de bloco
 // var vaza do escopo de bloco
@@ -114,16 +114,67 @@ console.log(largura);
 //console.log(nomeDaVar);
 //console.log(window.outraVar);
 
-var foo = 'batata';
+// var foo = 'batata';
+// if (1) {
+//   let foo = 'feijão';
+//   foo = 'bleleleyu';
+//   console.log(foo);
+//   if (1) {
+//     let foo = 'cebola';
+//     console.log(foo);
+//   }
+// }
+// console.log(foo);
 
-if (1) {
-  let foo = 'feijão';
-  foo = 'bleleleyu';
-  console.log(foo);
-  if (1) {
-    let foo = 'cebola';
-    console.log(foo);
+
+// a baixo exemplos de classes e objetos
+
+function criaPessoa(nome, idade, rg) {
+  const novaPessoa = {}
+  novaPessoa.nome = nome
+  novaPessoa.idade = idade
+  novaPessoa.rg = rg
+  return novaPessoa
+}
+// const pessoa = criaPessoa('Juliana', 26, '7235654453');
+
+class Pessoa {
+  constructor(nome, idade, rg) {
+    this.nome = nome
+    this.idade = idade
+    this.rg = rg
+  }
+
+  correr() {
+    console.log(`${this.nome} está correndo!`);
   }
 }
 
-console.log(foo);
+const ju = new Pessoa('Juliana', 26, '7235654453');
+const romeu = new Pessoa('Romeu', 29, '7344654453');
+
+console.log(ju, romeu);
+
+console.log(ju.nome)
+
+romeu.correr();
+
+class Template {
+  constructor(id, html) {
+    this.elem = document.getElementById(id);
+    this.html = html;
+  }
+  modelo(conteudo) {
+    return `<span style="color:red">${conteudo}</span>`
+  }
+  atualiza() {
+    this.elem.innerHTML = 
+      this.modelo(this.html)
+  }
+}
+
+const div = new Template('teste', 'oi');
+console.log(div)
+div.atualiza()
+
+
