@@ -177,4 +177,18 @@ const div = new Template('teste', 'oi');
 console.log(div)
 div.atualiza()
 
+class Endereco {
+  constructor (Logradouro, numero, cidade, estado, pais, cep){
+      this.Logradouro = Logradouro;
+      this.numero = numero;
+      this.cidade = cidade;
+      this.estado = estado;
+      this.pais = pais;
+      this.cep = cep;
+  }
+}
+
+const end = new Endereco('Logradouro', 'numero', 'cidade', 'estado', 'pais', 'cep')
+
+console.log(end.cep)
 
