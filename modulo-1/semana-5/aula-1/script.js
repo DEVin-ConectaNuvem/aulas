@@ -1,6 +1,6 @@
+const ul = document.getElementById('teste');
 
 // revisão classes
-// const ul = document.getElementById('teste');
 // class Item {
 //   static #nextId = 0;
 //   #id;
@@ -88,5 +88,97 @@ const quadradoC = numero => {
 const quadrado = numero => numero ** 2;
 const resultado = quadrado(2);
 //console.log(resultado);
+//vetor.forEach(item => console.log(item))
 
-vetor.forEach(item => console.log(item))
+// a palavra reservada this, em uma função comum
+// possui o this do contexto de execução
+class ItemA {
+  descricao;
+  constructor(desc) {
+    this.descricao = desc;
+  }
+  montaItem() {
+    const li = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    checkbox.onclick = function () {
+      // este this é o checkbox no evento de click
+      console.log(this);
+    }
+
+    const texto =
+      document.createTextNode(this.descricao);
+    li.appendChild(checkbox);
+    li.appendChild(texto);
+    return li;
+  }
+}
+// a palavra reservada this, em uma função arrow
+// possui o this do contexto de definição
+class ItemB {
+  descricao;
+  constructor(desc) {
+    this.descricao = desc;
+  }
+  montaItem() {
+    const li = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    checkbox.onclick = () => {
+      // este this é a instância da classe Item
+      console.log(this);
+    }
+
+    const texto =
+      document.createTextNode(this.descricao);
+    li.appendChild(checkbox);
+    li.appendChild(texto);
+    return li;
+  }
+}
+
+
+const item = new ItemB('blah');
+
+//console.log(item);
+ul.appendChild(item.montaItem())
+
+
+// exemplos em classes
+
+// função criada fora de contexto
+function mostraThisA() {
+  console.log(this);
+  console.log(this.nome);
+}
+
+const frutaA = {
+  nome: 'MelãoA',
+  imprimir: mostraThisA
+};
+
+// chamada no contexto do objeto
+frutaA.imprimir();
+
+// CONSOLE: 'Melão'
+// Funções comuns redefinem this ao contexto
+
+// função criada fora de contexto
+const mostraThisB = () => {
+  console.log(this);
+  console.log(this.nome);
+}
+
+const frutaB = {
+  nome: 'MelãoB',
+  imprimir: mostraThisB
+}
+
+// chamada no contexto do objeto
+frutaB.imprimir()
+
+// CONSOLE: undefined (pois this é window)
+// Arrow functions não redefinem this
+
