@@ -1,0 +1,7 @@
+class Conta {
+  constructor(numeroConta, saldo, cliente) {
+    this.numeroConta = numeroConta;
+    this.saldo = saldo;
+    this.cliente = cliente;
+  }
+}
