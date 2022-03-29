@@ -61,7 +61,7 @@ const saudacoesArrow = () => {
 // saudacoesComum();
 // saudacoesArrow();
 
-const vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//const vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // vetor.forEach(function (item) {
 //   console.log(item);
@@ -86,7 +86,7 @@ const quadradoC = numero => {
 // arrow function sem chaves retorna
 // automaticamente o valor da instrução
 const quadrado = numero => numero ** 2;
-const resultado = quadrado(2);
+//const resultado = quadrado(2);
 //console.log(resultado);
 //vetor.forEach(item => console.log(item))
 
@@ -150,12 +150,10 @@ ul.appendChild(item.montaItem())
 
 // função criada fora de contexto
 function mostraThisA() {
-  console.log(this);
-  console.log(this.nome);
+  console.log(this, this.nome);
 }
 const mostraThisB = () => {
-  console.log(this);
-  console.log(this.nome);
+  console.log(this, this.nom);
 }
 
 const fruta = {
@@ -165,8 +163,25 @@ const fruta = {
 };
 
 // chamada no contexto do objeto
-fruta.imprimirA(); // CONSOLE: 'Melão
+//fruta.imprimirA(); // CONSOLE: 'Melão
 // Funções comuns redefinem this ao contexto
-fruta.imprimirB(); // CONSOLE: undefined
+//fruta.imprimirB(); // CONSOLE: undefined
 // Arrow functions não redefinem this
 
+
+// EXEMPLOS FUNÇÕES DE ARRAY
+
+const vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const result = vetor.map(n => n * 2);
+
+console.log(vetor);
+console.log(result);
+
+const filtrado = vetor.filter(n => n > 5);
+// equivalente a
+// const filtrado = vetor.filter(function (n) {
+//  return n > 5;
+// });
+
+console.log(filtrado);
