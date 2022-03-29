@@ -173,10 +173,13 @@ const fruta = {
 
 const vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+// map monta um vetor novo a partir
+// dos returns
 const result = vetor.map(n => n * 2);
 //console.log(vetor);
 //console.log(result);
 
+// cria um vetor novo a partir dos testes
 const filtrado = vetor.filter(n => n > 5);
 // equivalente a
 // const filtrado = vetor.filter(function (n) {
@@ -190,6 +193,7 @@ const vetObj = [
 ];
 
 const m = vetObj.map(o => o.preco);
+
 const fltr = vetObj.filter(o => o.preco > 4);
 //console.log(m);
 //console.log(fltr);
