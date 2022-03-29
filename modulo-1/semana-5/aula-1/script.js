@@ -174,9 +174,8 @@ const fruta = {
 const vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const result = vetor.map(n => n * 2);
-
-console.log(vetor);
-console.log(result);
+//console.log(vetor);
+//console.log(result);
 
 const filtrado = vetor.filter(n => n > 5);
 // equivalente a
@@ -184,4 +183,30 @@ const filtrado = vetor.filter(n => n > 5);
 //  return n > 5;
 // });
 
-console.log(filtrado);
+const vetObj = [
+  { nome: 'batata', preco: 2 },
+  { nome: 'arroz', preco: 4 },
+  { nome: 'feijão', preco: 6 }
+];
+
+const m = vetObj.map(o => o.preco);
+const fltr = vetObj.filter(o => o.preco > 4);
+//console.log(m);
+//console.log(fltr);
+
+const obj = vetObj.find(o => o.preco === 6);
+//console.log(obj);
+
+// true se todos elementos passarem teste
+const re = vetObj.every(o => o.preco == 6);
+//console.log(re);
+
+// true se algum dos elementos passar teste
+const rs = vetObj.some(o => o.preco == 6);
+//console.log(rs);
+
+
+// includes testa se item está no vetor
+console.log(
+  vetor.includes(3)
+);
