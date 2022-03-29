@@ -1,4 +1,6 @@
 
-import { testeExport } from './utils.js'
+import { testeExport, Pessoa } from './utils.js'
 
-console.log(testeExport);
+const romeu = new Pessoa('Romeu', 29);
+
+console.log(romeu);
