@@ -153,32 +153,20 @@ function mostraThisA() {
   console.log(this);
   console.log(this.nome);
 }
-
-const frutaA = {
-  nome: 'MelãoA',
-  imprimir: mostraThisA
-};
-
-// chamada no contexto do objeto
-frutaA.imprimir();
-
-// CONSOLE: 'Melão'
-// Funções comuns redefinem this ao contexto
-
-// função criada fora de contexto
 const mostraThisB = () => {
   console.log(this);
   console.log(this.nome);
 }
 
-const frutaB = {
-  nome: 'MelãoB',
-  imprimir: mostraThisB
-}
+const fruta = {
+  nome: 'Melão',
+  imprimirA: mostraThisA,
+  imprimirB: mostraThisB
+};
 
 // chamada no contexto do objeto
-frutaB.imprimir()
-
-// CONSOLE: undefined (pois this é window)
+fruta.imprimirA(); // CONSOLE: 'Melão
+// Funções comuns redefinem this ao contexto
+fruta.imprimirB(); // CONSOLE: undefined
 // Arrow functions não redefinem this
 
