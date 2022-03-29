@@ -1,0 +1,20 @@
+class Cliente {
+  constructor(nome, cpf, endereco, celular) {
+    this.nome = nome;
+    this.cpf = cpf;
+    this.endereco = endereco;
+    this.celular = celular;
+  }
+
+  get checarCpf() {
+    return this.validarCpf();
+  }
+
+  validarCpf() {
+    if (this.cpf.length !== 11) {
+      return "CPF inválido.";
+    } else {
+      return "CPF válido.";
+    }
+  }
+}
