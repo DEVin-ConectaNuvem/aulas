@@ -50,12 +50,43 @@ const objDois = { ...objUm, nome: 'Romeu' };
 
 // EXEMPLOS DESTRUCT
 
-const { nome, idade, ...sobrou } = objUm;
+// renomeando um item de objeto
+// pegando item com nome certo
+// pegando restante dos itens
+const { nome: blah, idade, ...sobrou } = objUm;
 
-console.log(nome, idade, sobrou);
+//console.log(blah, idade, sobrou);
 
 const vet = ['Romeu', 2, 3, 4, 5];
 
 const [str, xx, ...blau] = vet;
 
-console.log(str, xx, blau);
+//console.log(str, xx, blau);
+
+// destruct na definição da função com valores padrão
+function apresentaP({ nome = 'A', idade = 0, prof = 'P' }) {
+  console.log(
+    `${nome}, ${idade}, ${prof}`
+  );
+}
+//apresentaP(objUm);
+//apresentaP({});
+
+const complex = {
+  nome: 'Juliana',
+  itens: { key: 'chave' }
+}
+
+// destruct do desctruct (inception)
+const { nome = 'Marta', itens: { key } } = complex
+
+console.log(nome, key);
+
+const prods = [
+  { titulo: 'batata', preco: 3 },
+  { titulo: 'feijao', preco: 6 },
+]
+
+const [{ titulo, preco }, bar] = prods
+
+console.log(titulo, preco, bar)
