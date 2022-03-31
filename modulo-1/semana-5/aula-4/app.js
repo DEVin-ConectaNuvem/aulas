@@ -30,6 +30,9 @@ buscaCEPpromise('88034001')
   .catch(erro => {
     //console.log('ERRRRRRROOOOU');
     //console.log(erro);
+  })
+  .finally(() => {
+    //console.log('Sempre executa ao final de tudo.');
   });
 
 //console.log('Após')
@@ -61,11 +64,11 @@ function buscaCEP() {
     return;
   }
 
-  fetch('https://viacep.com.br/ws/88032005/json')
+  fetch(`https://viacep.com.br/ws/${cep}/json`)
     .then(resposta => {
       resposta.json().then(conteudo => {
         console.log(conteudo);
-        display.innerHTML = conteudo.logradouro;
+        display.innerHTML = conteudo.localidade;
       })
     })
     .catch(erro => {
@@ -74,3 +77,6 @@ function buscaCEP() {
 }
 
 btnCEP.addEventListener('click', buscaCEP);
+
+
+// EXEMPLOS ASYNC AWAIT
