@@ -8,8 +8,6 @@ const listaCEPs = {
     logradouro: 'Rua do SENAI SC'
   }
 }
-
-
 // exemplo de criação de promisse
 function buscaCEPpromise(cep) {
   return new Promise((resolvido, rejeitado) => {
@@ -44,11 +42,20 @@ const p = document.getElementById('display');
 
 fetch('https://viacep.com.br/ws/88032005/json')
   .then(resposta => {
-    resposta.json()
-      .then(conteudo => {
-        console.log(conteudo);
-        p.innerHTML = conteudo.logradouro;
-      })
+    resposta.json().then(conteudo => {
+      console.log(conteudo);
+      p.innerHTML = conteudo.logradouro;
+    })
+  })
+  .catch(erro => {
+    console.log(erro)
+  });
+
+fetch('/modulo-1/semana-5/aula-4/teste.txt')
+  .then(resposta => {
+    resposta.text().then(conteudo => {
+      console.log(conteudo);
+    })
   })
   .catch(erro => {
     console.log(erro)
