@@ -9,28 +9,47 @@ const listaCEPs = {
   }
 }
 
+
+// exemplo de criação de promisse
 function buscaCEPpromise(cep) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolvido, rejeitado) => {
     const resultado = listaCEPs[cep];
     
     const erro = resultado ? null : 'CEP inválido!';
 
     if (erro) {
-      reject(erro);
+      rejeitado(erro);
     } else {
-      resolve(resultado);
+      resolvido(resultado);
     }
   });
 }
 
 buscaCEPpromise('88034001')
   .then(resultado => {
-    console.log(resultado);
+    //console.log(resultado);
   })
   .catch(erro => {
-    console.log('ERRRRRRROOOOU');
-    console.log(erro);
+    //console.log('ERRRRRRROOOOU');
+    //console.log(erro);
+  });
+
+//console.log('Após')
+
+
+// EXEMPLO DE FETCH
+//'/modulo-1/semana-5/aula-4/teste.txt'
+//'https://viacep.com.br/ws/88032005/json'
+const p = document.getElementById('display');
+
+fetch('https://viacep.com.br/ws/88032005/json')
+  .then(resposta => {
+    resposta.json()
+      .then(conteudo => {
+        console.log(conteudo);
+        p.innerHTML = conteudo.logradouro;
+      })
   })
-  .finally(() => {
-    console.log('FINAL');
+  .catch(erro => {
+    console.log(erro)
   });
