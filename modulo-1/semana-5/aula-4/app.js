@@ -35,28 +35,42 @@ buscaCEPpromise('88034001')
 //console.log('Após')
 
 
-// EXEMPLO DE FETCH
+// EXEMPLOS DE FETCH
+
+// fetch('/modulo-1/semana-5/aula-4/teste.txt')
+//   .then(resposta => {
+//     resposta.text().then(conteudo => {
+//       console.log(conteudo);
+//     })
+//   })
+//   .catch(erro => {
+//     console.log(erro)
+//   });
+
 //'/modulo-1/semana-5/aula-4/teste.txt'
 //'https://viacep.com.br/ws/88032005/json'
-const p = document.getElementById('display');
+const display = document.getElementById('display');
+const campoCEP = document.getElementById('campo-cep');
+const btnCEP = document.getElementById('btn-cep');
 
-fetch('https://viacep.com.br/ws/88032005/json')
-  .then(resposta => {
-    resposta.json().then(conteudo => {
-      console.log(conteudo);
-      p.innerHTML = conteudo.logradouro;
-    })
-  })
-  .catch(erro => {
-    console.log(erro)
-  });
+function buscaCEP() {
+  const cep = campoCEP.value;
 
-fetch('/modulo-1/semana-5/aula-4/teste.txt')
-  .then(resposta => {
-    resposta.text().then(conteudo => {
-      console.log(conteudo);
+  if (!cep) {
+    display.innerHTML = 'Informe um CEP!';
+    return;
+  }
+
+  fetch('https://viacep.com.br/ws/88032005/json')
+    .then(resposta => {
+      resposta.json().then(conteudo => {
+        console.log(conteudo);
+        display.innerHTML = conteudo.logradouro;
+      })
     })
-  })
-  .catch(erro => {
-    console.log(erro)
-  });
+    .catch(erro => {
+      console.log(erro)
+    });
+}
+
+btnCEP.addEventListener('click', buscaCEP);
