@@ -124,4 +124,32 @@ async function buscaCEPawait() {
   // });
 }
 
-btnCEP.addEventListener('click', buscaCEPawait);
+//btnCEP.addEventListener('click', buscaCEPawait);
+
+// EXEMPLO COM TRY CATCH
+
+async function buscaCEPtry() {
+  try {
+    const cep = campoCEP.value;
+
+    if (!cep) {
+      throw new Error('CEP não informado!');
+    }
+    
+    const url = `https://viacep.com.br/ws/${cep}/json`;
+    const resposta = await fetch(url);
+    const conteudo = await resposta.json()
+
+    console.log(conteudo);
+    display.innerHTML = conteudo.localidade;
+
+  } catch (erro) {
+    display.innerHTML = erro;
+    console.log('DENTRO DO CATCH!');
+    console.log({ erro });
+  } finally {
+    console.log('FINALLY!');
+  }
+}
+
+btnCEP.addEventListener('click', buscaCEPtry);
