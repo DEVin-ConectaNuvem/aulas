@@ -11,6 +11,13 @@
   <!-- type="module" automaticamente faz defer -->
   <script src="app.js" type="module"></script>
 
+  <style>
+    #img-cat {
+      max-width: calc(100vw - 4cm);
+      margin: 1cm auto;
+    }
+  </style>
+
 </head>
 <body>
   <h1>M1S05 Aula 4</h1>
@@ -18,6 +25,11 @@
   <input type="text" id="campo-cep" value="88032005">
   <button id="btn-cep">Busca</button>
   <p id="display"></p>
+
+  <br>
+  <button id="btn-cat">Show me the cat</button>
+  <br>
+  <img id="img-cat" src="" alt="Cat picture!">
 
 </body>
 </html>
