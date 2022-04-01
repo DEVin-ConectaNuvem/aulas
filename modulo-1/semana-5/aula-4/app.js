@@ -126,13 +126,17 @@ async function buscaCEPawait() {
 
 //btnCEP.addEventListener('click', buscaCEPawait);
 
+function validaCEP(cep) {
+  return cep.length === 8;
+}
+
 // EXEMPLO COM TRY CATCH
 
 async function buscaCEPtry() {
   try {
     const cep = campoCEP.value;
 
-    if (!cep) {
+    if (!validaCEP(cep)) {
       throw new Error('CEP não informado!');
     }
     
