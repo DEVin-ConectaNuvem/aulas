@@ -3,7 +3,6 @@ const campoProduto = document.getElementById('campo-produto');
 const botaoBuscar = document.getElementById('botao-buscar');
 const pMensagem = document.getElementById('mensagem');
 
-
 const produtos = [
   { nome: 'arroz', preco: 9 },
   { nome: 'feijao', preco: 12 },
@@ -12,22 +11,17 @@ const produtos = [
 ];
 
 function buscaPreco(nomeProduto) {
-  const produto = produtos.find(p => p.nome === nomeProduto);
-
-  if (produto) {
-    return `R$ ${produto.preco}`
-  } else {
-    return 'Produto não encontrado'
-  }
-
-  // equivalente
-  // return produto
-  //   ? `R$ ${produto.preco}`
-  //   : 'Produto não encontrado';
+  return produtos.find(p => p.nome === nomeProduto);
 }
 
 botaoBuscar.addEventListener('click', () => {
   const nomeProduto = campoProduto.value;
-  const mensagem = buscaPreco(nomeProduto);
+  const resultado = buscaPreco(nomeProduto);
+  let mensagem = 'Produto não encontrado';
+
+  if (resultado) {
+    mensagem = `R$ ${resultado.preco}`;
+  }
+ 
   pMensagem.innerText = mensagem;
 })
