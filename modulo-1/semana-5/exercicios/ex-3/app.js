@@ -2,6 +2,7 @@
 const campoProduto = document.getElementById('campo-produto');
 const botaoBuscar = document.getElementById('botao-buscar');
 const pMensagem = document.getElementById('mensagem');
+const pTotal = document.getElementById('total');
 
 const produtos = [
   { nome: 'arroz', preco: 9 },
@@ -25,3 +26,12 @@ botaoBuscar.addEventListener('click', () => {
  
   pMensagem.innerText = mensagem;
 })
+
+// equivalente à
+// (acumulador, produto) => acumulador + produto.preco;
+
+const valorTotal = produtos.reduce((acumulador, produto) => {
+  return acumulador + produto.preco;
+}, 0);
+
+pTotal.innerText = `Valor total: R$ ${valorTotal}`;
