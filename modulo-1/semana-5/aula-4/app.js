@@ -126,9 +126,6 @@ async function buscaCEPawait() {
 
 //btnCEP.addEventListener('click', buscaCEPawait);
 
-function validaCEP(cep) {
-  return cep.length === 8;
-}
 
 // EXEMPLO COM TRY CATCH
 
@@ -136,10 +133,12 @@ async function buscaCEPtry() {
   try {
     const cep = campoCEP.value;
 
-    if (!validaCEP(cep)) {
-      throw new Error('CEP não informado!');
+    if (cep.length !== 8) {
+      throw new Error('CEP com tamanho inválido!');
+    } else if (!/^\d+$/.test(cep)) {
+      throw new Error('CEP só pode conter números!');
     }
-    
+
     const url = `https://viacep.com.br/ws/${cep}/json`;
     const resposta = await fetch(url);
     const conteudo = await resposta.json()
@@ -180,3 +179,22 @@ async function fetchCat() {
 }
 
 btnCat.addEventListener('click', fetchCat);
+
+
+
+// exemplo exercício 3
+
+const produtos = [
+  { nome: 'arroz', preco: 9 },
+  { nome: 'feijao', preco: 12 },
+  { nome: 'batata', preco: 8 },
+  { nome: 'macarrao', preco: 5 }
+];
+
+let acc = 0;
+
+const total = produtos.reduce((acc, item) => {
+  return acc + item.preco;
+}, 0);
+
+console.log(total);
