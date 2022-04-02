@@ -10,7 +10,7 @@ async function showMeTheCat() {
     const response = await fetch(URL);
     //console.log(response);
     const content = await response.json();
-    console.log(content);
+    //console.log(content);
 
     imgCat.src = content[0].url;
   } catch (error) {
