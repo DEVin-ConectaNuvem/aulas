@@ -25,14 +25,16 @@
     export default {
         data() {
             return {
-                login: {}
+                login: {},
+                loader: {}
             }
         },
         methods: {
             autenticar() {
-                //this.$store.commit('autenticacaoModule/autenticar', this.login);
+                this.loader = this.$loading.show();
                 this.$store.dispatch('autenticacaoModule/autenticar', this.login)
                     .then(() => {
+                        this.loader.hide();
                         this.$router.push('/');
                     });
             }
